@@ -71,7 +71,7 @@ public class Application {
     }
 
     // 사용자 입력과 랜덤 넘버 비교
-    public static void checkInput(int[] answer, int[] userInput) {
+    public static boolean checkInput(int[] answer, int[] userInput) {
         // 1. 스트라이크, 볼 카운트 초기화
         int strike = 0;
         int ball = 0;
@@ -85,11 +85,36 @@ public class Application {
                 ball++;
             }
         }
+        return printResult(strike, ball);
     }
 
     // 해당 숫자가 포함되어 있는지 확인
     private static boolean contains(final int[] arr, final int key) {
         return Arrays.stream(arr).anyMatch(i -> i == key);
+    }
+
+    // 계산 결과에 따른 출력
+    public static boolean printResult(int strike, int ball) {
+        // 1. 일치하는 숫자가 없는 경우
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            // 2. 일치하는 숫자가 있는 경우, 결과 출력
+        } else {
+            if (strike > 0) {
+                System.out.print(strike + "스트라이크 ");
+            }
+            if (ball > 0) {
+                System.out.print(ball + "볼");
+            }
+            System.out.println();
+
+            // 3. 3스트라이크이면, 이번 게임 종료
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 끝");
+                return true;
+            }
+        }
+        return false;
     }
 
 
