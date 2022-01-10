@@ -133,6 +133,23 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        // TODO 숫자 야구 게임 구현
+        // 1. 게임 진행 확인을 위한 isPlaying 초기화
+        boolean isPlaying = true;
+
+        while (isPlaying) {
+            // 2-1. 정답 숫자 3개를 담을 answer 초기화
+            int[] answer = new int[3];
+            // 2-2. 사용자 입력 값을 기록할 input 초기화
+            int[] userInput = new int[3];
+
+            // 3-1. 랜덤 숫자 선택
+            pickNumbers(answer);
+            // 3-2. 사용자 입력 받기
+            do {
+                getInput(userInput);
+            } while (!checkInput(answer, userInput));
+            // 3-3. 게입 종료 결정
+            isPlaying = restartGame();
+        }
     }
 }
