@@ -117,6 +117,20 @@ public class Application {
         return false;
     }
 
+    // 게임 재시작 결정
+    public static boolean restartGame() {
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = Console.readLine();
+            if (input.equals("1")) {
+                return true;
+            } else if (input.equals("2")) {
+                return false;
+            } else {
+                System.out.println("[ERROR] 1 또는 2를 입력해 주세요.");
+            }
+        }
+    }
 
     public static void main(String[] args) {
         // TODO 숫자 야구 게임 구현
