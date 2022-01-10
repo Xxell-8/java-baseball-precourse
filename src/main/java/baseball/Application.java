@@ -1,4 +1,5 @@
 package baseball;
+import java.util.Arrays;
 import nextstep.utils.Randoms;
 import nextstep.utils.Console;
 
@@ -68,6 +69,29 @@ public class Application {
         }
         return true;
     }
+
+    // 사용자 입력과 랜덤 넘버 비교
+    public static void checkInput(int[] answer, int[] userInput) {
+        // 1. 스트라이크, 볼 카운트 초기화
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            // 2-1. 같은 자리에 동일 숫자면 스트라이크
+            if (answer[i] == userInput[i]) {
+                strike++;
+                // 2-2. 자리는 다르지만 포함되어 있으며 볼
+            } else if (contains(answer, userInput[i])) {
+                ball++;
+            }
+        }
+    }
+
+    // 해당 숫자가 포함되어 있는지 확인
+    private static boolean contains(final int[] arr, final int key) {
+        return Arrays.stream(arr).anyMatch(i -> i == key);
+    }
+
 
     public static void main(String[] args) {
         // TODO 숫자 야구 게임 구현
