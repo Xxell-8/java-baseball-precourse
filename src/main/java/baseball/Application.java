@@ -22,8 +22,17 @@ public class Application {
         }
     }
 
+    // 사용자 입력 받기
+    public static void getInput(int[] userInput) {
+        boolean isValid = false;
+        while (!isValid) {
+            // 유효성 검사 + 올바른 입력값이 들어올 때까지 반복
+            isValid = validateInput(userInput);
+        }
+    }
+
     // 사용자 입력 유효성 검사
-    public static boolean isValid(int[] userInput) {
+    public static boolean validateInput(int[] userInput) {
         // 1-1. 사용자 입력 받아서 배열로 변환
         // cf. println은 줄바꿈이 생기고, print는 안 생긴다.
         System.out.print("숫자를 입력해 주세요 : ");
